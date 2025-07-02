@@ -19,6 +19,13 @@ app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
 app.use(cors())
 app.use(express.json());
 
+app.use('/api', (req, res, next)=> {
+  res.json({status: httpStatusText.SUCCESS, 
+    message: 'Welcome to Courses Node.js API',
+    code: 200,
+    data: null
+  });
+});
 app.use('/api/courses', coursesRouter);
 app.use('/api/users', usersRouter);
 // get access token from refresh token
